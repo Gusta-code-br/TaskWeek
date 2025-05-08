@@ -1,0 +1,17 @@
+.task-list {
+    margin-top: 16px;
+  }
+  
+  .empty-list {
+    padding: 16px;
+    text-align: center;
+    color: #888;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+  }
+  
+  .loading {
+    padding: 16px;
+    text-align: center;
+    color: #888;
+  }

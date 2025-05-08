@@ -1,0 +1,20 @@
+.day-tab {
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    padding: 24px;
+    min-width: 100px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: bold;
+  }
+  
+  .day-tab:hover {
+    background-color: #d0d0d0;
+  }
+  
+  .day-tab.active {
+    background-color: #fff;
+    border: 2px solid #2196f3;
+    color: #2196f3;
+  }

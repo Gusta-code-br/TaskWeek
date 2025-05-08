@@ -1,0 +1,76 @@
+.task-form-container {
+    flex: 1;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .task-form-header {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .back-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 16px;
+    color: #333;
+  }
+  
+  .task-form {
+    padding: 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 16px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  .form-actions {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+  
+  .delete-button {
+    background-color: #f44336;
+    color: #fff;
+    padding: 8px 16px;
+  }
+  
+  .delete-button:hover {
+    background-color: #d32f2f;
+  }
+  
+  .edit-button {
+    background-color: #2196f3;
+    color: #fff;
+    padding: 8px 16px;
+  }
+  
+  .edit-button:hover {
+    background-color: #1976d2;
+  }
+  
+  .save-button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 8px 16px;
+  }
+  
+  .save-button:hover {
+    background-color: #388e3c;
+  }
