@@ -50,6 +50,9 @@ Implementada com Node.js e Express.js, essa camada gerencia as regras de negóci
 ### Camada de Persistência (Banco de Dados)
 Utiliza o PostgreSQL para armazenar de forma estruturada as informações relacionadas às tarefas do usuário (título, descrição, status e dia da semana). O acesso ao banco é feito via Sequelize, que facilita a manipulação dos dados com uma abordagem orientada a objetos.
 
+## Informações relevantes
+Caso for baixar o repositório em sua máquina não esqueça de rodar o comando npm intall para baixar o arquivo node_modules caso contrário a aplicação não funcionará corretamente.
+
 ## 📊 Estimativa de Esforço e Custo
 
 ### Estimativa de Horas de Trabalho
