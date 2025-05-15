@@ -1,0 +1,27 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+<<<<<<< HEAD:taskweek/.gitignore
+=======
+/taskweek/node_modules
+/taskweek backend/node_modules
+>>>>>>> c7ca4b818393f25ef47c9b682d01e31f1852d662:.gitignore
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
