@@ -1,5 +1,0 @@
-{
-  "version": 2,
-  "buildCommand": "ls -la && npm install && npm run build",
-  "outputDirectory": "build"
-}
