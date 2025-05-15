@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "cd taskweek && npm install && npm run build",
-  "outputDirectory": "taskweek/build",
-  "installCommand": "cd taskweek && npm install"
+  "buildCommand": "ls -la && npm install && npm run build",
+  "outputDirectory": "build"
 }
