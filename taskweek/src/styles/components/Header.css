@@ -1,11 +1,18 @@
 .header {
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     padding: 16px;
+    display: flex;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    align-items: center;
   }
   
   .header h1 {
     color: #333;
+    text-align: center;
     font-size: 24px;
     font-weight: bold;
+    width: 100%;
+  }
+  #imagem-sem-fundo {
+    mix-blend-mode: multiply; /* Isso faz o branco ficar transparente */
   }
