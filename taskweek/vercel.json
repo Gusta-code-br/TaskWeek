@@ -1,0 +1,11 @@
+{
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/node",
+      "config": {
+        "buildCommand": "chmod +x ./node_modules/.bin/react-scripts && react-scripts build"
+      }
+    }
+  ]
+}
