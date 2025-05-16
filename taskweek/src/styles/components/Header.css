@@ -16,3 +16,11 @@
   #imagem-sem-fundo {
     mix-blend-mode: multiply; /* Isso faz o branco ficar transparente */
   }
+@media (max-width: 768px) {
+    .header h1 {
+        display: none;
+    }
+    .header {
+        display: flex;
+    }
+}
