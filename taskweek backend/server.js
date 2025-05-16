@@ -37,6 +37,9 @@ async function startServer() {
   }
 }
 
-startServer();
+// Iniciar o servidor apenas se este arquivo for executado diretamente
+if (require.main === module) {
+  startServer();
+}
 
 module.exports = app; // Para testes

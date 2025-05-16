@@ -17,6 +17,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:backend": "cross-env NODE_ENV=test react-scripts test --testPathPattern=tasks.test.js",
     "test:coverage": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject"
   },
@@ -43,17 +44,22 @@
     "@babel/preset-env": "^7.27.2",
     "@babel/preset-react": "^7.27.1",
     "babel-jest": "^29.7.0",
+    "cross-env": "^7.0.3",
     "identity-obj-proxy": "^3.0.0",
     "supertest": "^7.1.1",
     "util": "^0.12.5"
   },
   "jest": {
+    "testEnvironment": "node",
     "transformIgnorePatterns": [
       "node_modules/(?!(axios|@paralleldrive/cuid2)/)"
     ],
     "moduleNameMapper": {
       "\\.(css|less|scss|sass)$": "identity-obj-proxy",
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js"
-    }
+    },
+    "setupFiles": [
+      "<rootDir>/src/setupTests.js"
+    ]
   }
 }
