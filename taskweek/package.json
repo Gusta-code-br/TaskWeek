@@ -17,6 +17,8 @@
     "start": "react-scripts start",
     "build": "CI=false node ./node_modules/react-scripts/scripts/build.js",
     "test": "react-scripts test",
+    "test:backend": "cross-env NODE_ENV=test react-scripts test --testPathPattern=tasks.test.js",
+    "test:coverage": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -35,11 +37,6 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ]
-  },
-  "jest": {
-    "transformIgnorePatterns": [
-      "node_modules/(?!(axios)/)"
     ]
   }
 } 
