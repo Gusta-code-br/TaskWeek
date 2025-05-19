@@ -3,7 +3,10 @@
   "builds": [
     {
       "src": "server.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["**"]
+      }
     }
   ],
   "routes": [
@@ -11,5 +14,7 @@
       "src": "/(.*)",
       "dest": "server.js"
     }
-  ]
+  ],
+  "outputDirectory": ".",
+  "cleanUrls": true
 }
