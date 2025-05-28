@@ -20,10 +20,23 @@ app.get('/', (req, res) => {
 // Rotas de tarefas
 app.use('/api/tasks', taskRoutes);
 
-// Error handler
+// Error handler (deve ser o último middleware)
 app.use(errorHandler);
 
-// Iniciar servidor
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
-});
+// Sincroniza com o banco de dados e inicia o servidor
+async function startServer() {
+  try {
+    await sequelize.sync({ alter: true });
+    console.log('Banco de dados sincronizado com sucesso.');
+    
+    app.listen(PORT, () => {
+      console.log(`Servidor rodando na porta ${PORT}`);
+    });
+  } catch (error) {
+    console.error('Falha ao sincronizar o banco de dados:', error);
+  }
+}
+
+startServer();
+
+module.exports = app; // Para testes
