@@ -1,8 +1,3 @@
-app.use('/api/tasks', taskRoutes)
-app.get('/', (req, res) => {
-    res.json({ message: 'Bem-vindo à API do TaskWeek!' });
-  });
-
 const express = require('express');
 const router = express.Router();
 const taskController = require('../controllers/taskController');
