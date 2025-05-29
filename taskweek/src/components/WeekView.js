@@ -38,7 +38,7 @@ function WeekView({ onAddTask, onEditTask, onDayChange, currentDay }) {
           <div className="day-header">
             <h2>{currentDay}</h2>
             <button className="add-button" onClick={onAddTask}>
-              Adicionar <span className="plus-icon">+</span>
+              Adicionar <i className="fa-solid fa-plus"></i>
             </button>
           </div>
           <TaskList day={currentDay} onEditTask={onEditTask} />

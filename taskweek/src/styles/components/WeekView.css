@@ -60,9 +60,9 @@
     cursor: pointer;
   }
   
-  .plus-icon {
+  .fa-plus {
     margin-left: 4px;
-    font-size: 16px;
+    font-size: 12px;
   }
   @media (max-width: 768px) {
     .sidebar {

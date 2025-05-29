@@ -101,9 +101,9 @@ function TaskForm({ onClose, task, day }) {
     <div className="task-form-container">
       <div className="task-form-header">
         <button className="back-button" onClick={onClose} disabled={loading}>
-          ←
+          <i className="fa-solid fa-arrow-left"></i>
         </button>
-        <h2>{task ? 'Editando Tarefa' : 'Criando Nova Tarefa'}</h2>
+        <h2><i className="fa-solid fa-pencil"></i>{task ? 'Editando Tarefa' : 'Criando Nova Tarefa'}</h2>
       </div>
       <form className="task-form" onSubmit={handleSubmit}>
         <div className="form-group">
@@ -139,7 +139,7 @@ function TaskForm({ onClose, task, day }) {
               className="delete-button"
               onClick={handleDelete}
               disabled={loading}
-            >
+            ><i className="fa-solid fa-trash-can"></i>
               {loading ? 'Excluindo...' : 'Excluir'}
             </button>
           )}
@@ -149,6 +149,7 @@ function TaskForm({ onClose, task, day }) {
             onClick={onClose}
             disabled={loading}
           >
+          <i className="fa-solid fa-arrow-left"></i>
             Cancelar
           </button>
           <button 
@@ -156,6 +157,7 @@ function TaskForm({ onClose, task, day }) {
             className="save-button"
             disabled={loading}
           >
+            <i className="fa-solid fa-floppy-disk"></i>
             {loading ? 'Salvando...' : 'Salvar'}
           </button>
         </div>

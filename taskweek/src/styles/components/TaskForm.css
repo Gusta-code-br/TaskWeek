@@ -4,6 +4,10 @@
     display: flex;
     flex-direction: column;
   }
+
+  .fa-solid{
+    padding-right: 10px;
+  }
   
   .task-form-header {
     display: flex;
