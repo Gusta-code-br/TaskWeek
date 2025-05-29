@@ -11,7 +11,7 @@ const api = axios.create({
 
 export const getTasks = async () => {
   try {
-    const response = await api.get('/tasks');
+    const response = await api.get('/api/tasks');
     return response.data;
   } catch (error) {
     console.error('Erro ao buscar tarefas:', error);
