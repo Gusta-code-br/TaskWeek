@@ -31,7 +31,7 @@ export const getTasks = async () => {
 
 export const createTask = async (taskData) => {
   try {
-    const response = await api.post('/tasks', taskData);
+    const response = await api.post('/api/tasks', taskData);
     return response.data;
   } catch (error) {
     console.error('Erro ao criar tarefa:', error);
@@ -46,7 +46,7 @@ export const createTask = async (taskData) => {
 
 export const updateTask = async (id, taskData) => {
   try {
-    const response = await api.put(`/tasks/${id}`, taskData);
+    const response = await api.put(`/api/tasks/${id}`, taskData);
     return response.data;
   } catch (error) {
     console.error('Erro ao atualizar tarefa:', error);
@@ -60,7 +60,7 @@ export const updateTask = async (id, taskData) => {
 
 export const deleteTask = async (id) => {
   try {
-    const response = await api.delete(`/tasks/${id}`);
+    const response = await api.delete(`/api/tasks/${id}`);
     return response.data;
   } catch (error) {
     console.error('Erro ao excluir tarefa:', error);
