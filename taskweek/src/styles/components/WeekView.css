@@ -52,12 +52,14 @@
   .add-button {
     display: flex;
     align-items: center;
-    background-color: #f0f0f0;
+    background-color: #0F93F5;
+    color: #fff;
     border: none;
     padding: 8px 12px;
     font-size: 14px;
     border-radius: 4px;
     cursor: pointer;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
   }
   
   .fa-plus {
