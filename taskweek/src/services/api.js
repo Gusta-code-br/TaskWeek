@@ -62,13 +62,32 @@ export const updateTask = async (id, taskData) => {
 
 export const deleteTask = async (id) => {
   try {
-    // Corrigido: adicionado /api antes de /tasks
-    const response = await api.delete(`/api/tasks/${id}`);
+    console.log(`Tentando deletar tarefa com ID: ${id}`);
+    console.log(`Tipo do ID: ${typeof id}`);
+    console.log(`URL completa: ${API_URL}/api/tasks/${id}`);
+    
+    // Garantir que o ID seja um número válido
+    const taskId = parseInt(id);
+    if (isNaN(taskId)) {
+      throw new Error(`ID inválido: ${id}`);
+    }
+    
+    const response = await api.delete(`/api/tasks/${taskId}`);
+    console.log('Resposta do delete:', response.data);
+    
     return response.data;
   } catch (error) {
-    console.error('Erro ao excluir tarefa:', error);
-    // Simulação para desenvolvimento local
-    return { success: true };
+    console.error('Erro detalhado ao excluir tarefa:', {
+      message: error.message,
+      status: error.response?.status,
+      statusText: error.response?.statusText,
+      data: error.response?.data,
+      url: error.config?.url,
+      fullError: error
+    });
+    
+    // Re-throw o erro para que o componente possa tratar
+    throw error;
   }
 };
 

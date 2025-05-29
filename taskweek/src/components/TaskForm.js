@@ -3,13 +3,14 @@ import { useTaskContext } from '../context/TaskContext';
 import '../styles/components/TaskForm.css';
 
 function TaskForm({ onClose, task, day }) {
-  const { addTask, editTask } = useTaskContext();
+  const { addTask, editTask, removeTask } = useTaskContext();
   const [formData, setFormData] = useState({
     title: '',
     description: '',
     day: day
   });
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (task) {
@@ -62,6 +63,7 @@ function TaskForm({ onClose, task, day }) {
     }
     
     try {
+      setLoading(true);
       if (task) {
         await editTask(task.id, formData);
       } else {
@@ -70,13 +72,35 @@ function TaskForm({ onClose, task, day }) {
       onClose();
     } catch (error) {
       console.error('Erro ao salvar tarefa:', error);
+      alert('Erro ao salvar tarefa. Tente novamente.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDelete = async () => {
+    if (!task) return;
+    
+    if (window.confirm('Tem certeza que deseja excluir esta tarefa?')) {
+      try {
+        setLoading(true);
+        console.log('TaskForm - Deletando tarefa ID:', task.id);
+        await removeTask(task.id);
+        console.log('TaskForm - Tarefa deletada com sucesso');
+        onClose();
+      } catch (error) {
+        console.error('TaskForm - Erro ao excluir tarefa:', error);
+        alert('Erro ao excluir tarefa. Tente novamente.');
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
   return (
     <div className="task-form-container">
       <div className="task-form-header">
-        <button className="back-button" onClick={onClose}>
+        <button className="back-button" onClick={onClose} disabled={loading}>
           ←
         </button>
         <h2>{task ? 'Editando Tarefa' : 'Criando Nova Tarefa'}</h2>
@@ -91,6 +115,7 @@ function TaskForm({ onClose, task, day }) {
             value={formData.title}
             onChange={handleChange}
             className={errors.title ? 'error' : ''}
+            disabled={loading}
           />
           {errors.title && <span className="error-message">{errors.title}</span>}
         </div>
@@ -103,6 +128,7 @@ function TaskForm({ onClose, task, day }) {
             value={formData.description}
             onChange={handleChange}
             rows="5"
+            disabled={loading}
           />
         </div>
         
@@ -111,26 +137,31 @@ function TaskForm({ onClose, task, day }) {
             <button 
               type="button" 
               className="delete-button"
-              onClick={() => onClose()}
+              onClick={handleDelete}
+              disabled={loading}
             >
-              Excluir
+              {loading ? 'Excluindo...' : 'Excluir'}
             </button>
           )}
           <button 
             type="button" 
-            className="edit-button"
-            onClick={() => onClose()}
+            className="cancel-button"
+            onClick={onClose}
+            disabled={loading}
           >
-            Editar
+            Cancelar
           </button>
-          <button type="submit" className="save-button">
-            Salvar
+          <button 
+            type="submit" 
+            className="save-button"
+            disabled={loading}
+          >
+            {loading ? 'Salvando...' : 'Salvar'}
           </button>
         </div>
       </form>
     </div>
   );
 }
-
 
 export default TaskForm;
