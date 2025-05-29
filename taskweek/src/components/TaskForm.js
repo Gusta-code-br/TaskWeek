@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTaskContext } from '../context/TaskContext';
 import '../styles/components/TaskForm.css';
+import Swal from 'sweetalert2';
 
 function TaskForm({ onClose, task, day }) {
   const { addTask, editTask, removeTask } = useTaskContext();
@@ -79,23 +80,46 @@ function TaskForm({ onClose, task, day }) {
   };
 
   const handleDelete = async () => {
-    if (!task) return;
-    
-    if (window.confirm('Tem certeza que deseja excluir esta tarefa?')) {
-      try {
-        setLoading(true);
-        console.log('TaskForm - Deletando tarefa ID:', task.id);
-        await removeTask(task.id);
-        console.log('TaskForm - Tarefa deletada com sucesso');
-        onClose();
-      } catch (error) {
-        console.error('TaskForm - Erro ao excluir tarefa:', error);
-        alert('Erro ao excluir tarefa. Tente novamente.');
-      } finally {
-        setLoading(false);
-      }
+  if (!task) return;
+  
+  const result = await Swal.fire({
+    title: "Deseja excluir essa task?",
+    text: "Você não poderá voltar depois disso!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Sim, excluir!",
+    cancelButtonText: "Cancelar"
+  });
+
+  if (result.isConfirmed) {
+    try {
+      setLoading(true);
+      console.log('TaskForm - Deletando tarefa ID:', task.id);
+      await removeTask(task.id);
+      console.log('TaskForm - Tarefa deletada com sucesso');
+      
+      await Swal.fire({
+        title: "Excluído!",
+        text: `Sua task ${task.id} foi excluída.`,
+        icon: "success"
+      });
+      
+      onClose();
+    } catch (error) {
+      console.error('TaskForm - Erro ao excluir tarefa:', error);
+      
+      await Swal.fire({
+        title: "Erro!",
+        text: "Erro ao excluir tarefa. Tente novamente.",
+        icon: "error"
+      });
+    } finally {
+      setLoading(false);
     }
-  };
+  }
+};
 
   return (
     <div className="task-form-container">
