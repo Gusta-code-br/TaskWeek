@@ -4,7 +4,7 @@ const Task = require('../models/Task');
 const getAllTasks = async (req, res, next) => {
   try {
     const tasks = await Task.findAll({
-      order: [['createdAt', 'DESC']]
+      order: [['created_at', 'DESC']]
     });
     res.status(200).json(tasks);
   } catch (error) {
@@ -23,7 +23,7 @@ const getTasksByDay = async (req, res, next) => {
     
     const tasks = await Task.findAll({
       where: { day },
-      order: [['createdAt', 'DESC']]
+      order: [['created_at', 'DESC']]
     });
     
     res.status(200).json(tasks);

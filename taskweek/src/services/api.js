@@ -31,6 +31,7 @@ export const getTasks = async () => {
 
 export const createTask = async (taskData) => {
   try {
+    // Corrigido: adicionado /api antes de /tasks
     const response = await api.post('/api/tasks', taskData);
     return response.data;
   } catch (error) {
@@ -46,6 +47,7 @@ export const createTask = async (taskData) => {
 
 export const updateTask = async (id, taskData) => {
   try {
+    // Corrigido: adicionado /api antes de /tasks
     const response = await api.put(`/api/tasks/${id}`, taskData);
     return response.data;
   } catch (error) {
@@ -60,11 +62,23 @@ export const updateTask = async (id, taskData) => {
 
 export const deleteTask = async (id) => {
   try {
+    // Corrigido: adicionado /api antes de /tasks
     const response = await api.delete(`/api/tasks/${id}`);
     return response.data;
   } catch (error) {
     console.error('Erro ao excluir tarefa:', error);
     // Simulação para desenvolvimento local
     return { success: true };
+  }
+};
+
+// Função adicional para alternar o status da tarefa (usando a rota PATCH)
+export const toggleTaskStatus = async (id) => {
+  try {
+    const response = await api.patch(`/api/tasks/${id}/toggle`);
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao alternar status da tarefa:', error);
+    throw error;
   }
 };
